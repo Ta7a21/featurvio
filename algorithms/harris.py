@@ -19,7 +19,7 @@ def harris_response(image, k=0.04):
     return harris_response_matrix
 
 
-def corners(image, threshold=0.01):
+def corners(image, threshold=0.05):
     corners_image_matrix = np.copy(image)
     harris_response_matrix = harris_response(image)
     harris_matrix = cv2.dilate(harris_response_matrix, None)

@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QPixmap
 import time
 import algorithms.harris as Harris
+import algorithms.sift as SIFT
 import modules.message as Message
 import modules.image as Image
 
@@ -52,6 +53,8 @@ def choose_feature(self, text):
         output_image = Harris.harris_response(image_matrix)
     elif text == "Corners":
         output_image = Harris.corners(image_matrix)
+    elif text == "SIFT":
+        output_image = SIFT.image(image_matrix)
     end = time.time()
     Image.write(output_image_path, output_image)
     plot_image(self, output_image_path, "output")
