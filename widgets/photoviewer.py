@@ -1,4 +1,4 @@
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtCore, QtWidgets, QtGui
 
 
 class PhotoViewer(QtWidgets.QGraphicsView):
@@ -19,6 +19,9 @@ class PhotoViewer(QtWidgets.QGraphicsView):
 
     def hasPhoto(self):
         return not self._empty
+
+    def clear(self):
+        self._photo.setPixmap(QtGui.QPixmap())
 
     def setPhoto(self, pixmap=None):
         self._zoom = 0

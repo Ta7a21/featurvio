@@ -206,6 +206,9 @@ padding-left: 2px
         </item>
         <item alignment="Qt::AlignVCenter">
          <widget class="QComboBox" name="features_combobox">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -232,7 +235,12 @@ padding-left: 2px
           </property>
           <item>
            <property name="text">
-            <string>Harris</string>
+            <string>Harris Response</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Corners</string>
            </property>
           </item>
           <item>

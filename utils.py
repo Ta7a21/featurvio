@@ -2,7 +2,11 @@ from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QPixmap
 import message as Message
 import time
-import features_matching as Features
+import cv2
+from algorithms import harris
+import image as Image
+
+output_image_path = "cached/output.png"
 
 
 def browse_files(self):
@@ -23,7 +27,12 @@ def browse_files(self):
 
 
 def start(self):
+    global image_matrix
+
+    self.output_image.clear()
+    self.features_combobox.setCurrentIndex(-1)
     plot_image(self, file_path, "original")
+    image_matrix = Image.read(file_path)
     enable_actions(self)
 
 
@@ -40,7 +49,11 @@ def enable_actions(self):
 
 def choose_feature(self, text):
     start = time.time()
-    # Features.
+    if text == "Harris Response":
+        output_image = harris.harris_response(image_matrix)
+    elif text == "Corners":
+        output_image = harris.corners(image_matrix)
     end = time.time()
+    Image.write(output_image_path, output_image)
+    plot_image(self, output_image_path, "output")
     Message.info(self, f"Time taken equals {round(end - start, 2)} seconds")
-    plot_image(self, file_path, "output")
