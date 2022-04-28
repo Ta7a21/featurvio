@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMainWindow
 import sys
-import utils as Utils
+import modules.utils as Utils
 
 
 class Ui(QMainWindow):
