@@ -8,8 +8,12 @@ class Ui(QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
         uic.loadUi("app.ui", self)
+        self.template_widget.setVisible(False)
         self.showMaximized()
-        self.open_image.clicked.connect(lambda: Utils.browse_files(self))
+        self.open_image.clicked.connect(lambda: Utils.browse_files(self, "original"))
+        self.open_template_image.clicked.connect(
+            lambda: Utils.browse_files(self, "template")
+        )
         self.features_combobox.activated[str].connect(
             lambda text: Utils.choose_feature(self, text)
         )

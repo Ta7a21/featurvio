@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1297</width>
-    <height>686</height>
+    <width>1148</width>
+    <height>591</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -45,7 +45,7 @@ padding-left: 2px
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -125,7 +125,7 @@ padding-left: 2px
         </item>
        </layout>
       </item>
-      <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+      <item alignment="Qt::AlignHCenter">
        <widget class="PhotoViewer" name="original_image">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -135,8 +135,8 @@ padding-left: 2px
         </property>
         <property name="minimumSize">
          <size>
-          <width>500</width>
-          <height>500</height>
+          <width>400</width>
+          <height>400</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -163,6 +163,93 @@ padding-left: 2px
        </widget>
       </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QWidget" name="template_widget" native="true">
+      <layout class="QVBoxLayout" name="template_box">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item alignment="Qt::AlignVCenter">
+          <widget class="QLabel" name="imageLabel_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>AlHor</family>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Template Image</string>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignVCenter">
+          <widget class="QPushButton" name="open_template_image">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Open Image</string>
+           </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="PhotoViewer" name="template_image">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>400</width>
+           <height>400</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -253,6 +340,11 @@ padding-left: 2px
             <string>SSD</string>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string>NCC</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
@@ -267,8 +359,8 @@ padding-left: 2px
         </property>
         <property name="minimumSize">
          <size>
-          <width>500</width>
-          <height>500</height>
+          <width>400</width>
+          <height>400</height>
          </size>
         </property>
         <property name="maximumSize">

@@ -39,8 +39,7 @@ from cv2 import (
     drawKeypoints,
     waitKey,
     cvtColor,
-    COLOR_BGR2GRAY
-    
+    COLOR_BGR2GRAY,
 )
 from functools import cmp_to_key
 

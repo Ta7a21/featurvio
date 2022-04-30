@@ -10,5 +10,4 @@ def read(image_path):
 
 
 def write(image_path, image):
-    # cv2.imwrite(image_path, image)
     img.imsave(image_path, image, cmap="gray")
