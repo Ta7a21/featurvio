@@ -91,12 +91,18 @@ def choose_feature(self, text):
         output_image = SIFT.image(original_image_matrix)
     elif text == "SSD":
         self.output_image.clear()
-        toggle_template_widget(self, True)
-        return
+        try:
+            output_image = Match.SSD(original_image_matrix, template_image_matrix)
+        except:
+            toggle_template_widget(self, True)
+            return
     elif text == "NCC":
         self.output_image.clear()
-        toggle_template_widget(self, True)
-        return
+        try:
+            output_image = Match.SSD(original_image_matrix, template_image_matrix)
+        except:
+            toggle_template_widget(self, True)
+            return
     end = time.time()
     Image.write(output_image_path, output_image)
     plot_image(self, output_image_path, "output")
