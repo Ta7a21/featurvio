@@ -37,7 +37,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>FeaturVio</string>
+   <string>GUI</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
@@ -322,27 +322,57 @@ padding-left: 2px
           </property>
           <item>
            <property name="text">
-            <string>Harris Response</string>
+            <string>RGB to LUV</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Corners</string>
+            <string>K-Means</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>SIFT</string>
+            <string>Mean Shift</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>SSD</string>
+            <string>Region Growing</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>NCC</string>
+            <string>Agglomerative Clustering</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Global Otsu</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Local Otsu</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Global Optimal</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Local Optimal</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Global Spectral</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Local Spectral</string>
            </property>
           </item>
          </widget>

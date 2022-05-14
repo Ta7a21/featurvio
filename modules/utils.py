@@ -1,10 +1,13 @@
+import imp
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QPixmap
 import time
 
-import algorithms.harris as Harris
-import algorithms.sift as SIFT
-import algorithms.match as Match
+from black import out
+
+import algorithms.color_map as ColorMap
+import algorithms.segmentation as Segmentation
+import algorithms.threshold as Threshold
 import modules.message as Message
 import modules.image as Image
 
@@ -28,34 +31,14 @@ def browse_files(self, input_image):
 
 
 def start(self, file_path, input_image):
-    global original_image_matrix, template_image_matrix
+    global original_image_matrix
 
     self.output_image.clear()
-    self.template_image.clear()
     plot_image(self, file_path, input_image)
     enable_actions(self)
 
-    try:
-        if feature:
-            toggle_template_widget(self, True)
-    except:
-        toggle_template_widget(self, False)
-        self.features_combobox.setCurrentIndex(-1)
-
     if input_image == "original":
         original_image_matrix = Image.read(file_path)
-
-    if input_image == "template":
-        template_image_matrix = Image.read(file_path)
-        start = time.time()
-        if feature == "SSD":
-            output_image = Match.SSD(original_image_matrix, template_image_matrix)
-        if feature == "NCC":
-            output_image = Match.NCC(original_image_matrix, template_image_matrix)
-        end = time.time()
-        Image.write(output_image_path, output_image)
-        plot_image(self, output_image_path, "output")
-        Message.info(self, f"Time taken equals {round(end - start, 2)} seconds")
 
 
 def plot_image(self, image_path, image_type):
@@ -63,16 +46,10 @@ def plot_image(self, image_path, image_type):
         self.original_image.setPhoto(QPixmap(image_path))
     if image_type == "output":
         self.output_image.setPhoto(QPixmap(image_path))
-    if image_type == "template":
-        self.template_image.setPhoto(QPixmap(image_path))
 
 
 def enable_actions(self):
     self.features_combobox.setEnabled(True)
-
-
-def toggle_template_widget(self, status):
-    self.template_widget.setVisible(status)
 
 
 def choose_feature(self, text):
@@ -80,29 +57,28 @@ def choose_feature(self, text):
 
     feature = text
     start = time.time()
-    if text == "Harris Response":
-        toggle_template_widget(self, False)
-        output_image = Harris.harris_response(original_image_matrix)
-    elif text == "Corners":
-        toggle_template_widget(self, False)
-        output_image = Harris.corners(original_image_matrix)
-    elif text == "SIFT":
-        toggle_template_widget(self, False)
-        output_image = SIFT.image(original_image_matrix)
-    elif text == "SSD":
-        self.output_image.clear()
-        try:
-            output_image = Match.SSD(original_image_matrix, template_image_matrix)
-        except:
-            toggle_template_widget(self, True)
-            return
-    elif text == "NCC":
-        self.output_image.clear()
-        try:
-            output_image = Match.SSD(original_image_matrix, template_image_matrix)
-        except:
-            toggle_template_widget(self, True)
-            return
+    if text == "RGB to LUV":
+        output_image = ColorMap.RGB_to_LUV(original_image_matrix)
+    elif text == "K-Means":
+        output_image, _ = Segmentation.k_means(original_image_matrix)
+    elif text == "Region Growing":
+        output_image = Segmentation.region_growing(original_image_matrix)
+    elif text == "Agglomerative Clustering":
+        output_image = Segmentation.agglomerative_clustering(original_image_matrix)
+    elif text == "Mean Shift":
+        output_image = Segmentation.mean_shift(original_image_matrix)
+    elif text == "Global Otsu":
+        output_image = Threshold.global_otsu(original_image_matrix)
+    elif text == "Global Optimal":
+        output_image = Threshold.global_optimal(original_image_matrix)
+    elif text == "Global Spectral":
+        output_image = Threshold.global_spectral(original_image_matrix)
+    elif text == "Local Otsu":
+        output_image = Threshold.local_otsu(original_image_matrix)
+    elif text == "Local Optimal":
+        output_image = Threshold.local_optimal(original_image_matrix)
+    elif text == "Local Spectral":
+        output_image = Threshold.local_spectral(original_image_matrix)
     end = time.time()
     Image.write(output_image_path, output_image)
     plot_image(self, output_image_path, "output")
